@@ -4,6 +4,7 @@ Simple python script that generates a University of Manchester's CAS4 - Casual T
 
 ### Pre-Requirements
 
+0. Install the [Google API Python Client](https://developers.google.com/api-client-library/python/start/installation)
 1. Create a [new Google Calendar](https://calendar.google.com/calendar/b/0/render?tab=mc#details_2%7Cdtv-_new_calendar_id_0-0-0) and note the **Calendar ID** from it's settings.
 2. Save a copy of the [CAS4 Google Sheets](https://docs.google.com/spreadsheets/d/1VJiNVZMy8vPRTqAarBFoP3HnLifWkRFGYoo8O7PWlRg/edit) document to your Google Drive. Note it's new **Document ID**.
 3. Prefill or modify the CAS4 template document as necessary.
