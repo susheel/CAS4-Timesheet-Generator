@@ -10,7 +10,7 @@ from apiclient.http import MediaIoBaseDownload
 from gclient import GClient
 
 CALENDAR_ID = "0vgnado5nqmtgc21egqgdl9888@group.calendar.google.com"
-DOC_ID = "1ZAMos4th-2YuFJPLQrvZrnPwLw68eFkzLhW1PKIMUeU"
+TIMESHEET_TEMPLATE_ID = "1ZAMos4th-2YuFJPLQrvZrnPwLw68eFkzLhW1PKIMUeU"
 TIMESHEET_RANGE = "'CAS 4'!B27:I33"
 DAY2ROW = {0: 6, 1: 0, 2: 1, 3: 2, 4: 3, 5: 4, 6: 5}
 START_DATE = "2017-02-01"
@@ -26,7 +26,7 @@ def clear_timesheet(data=None):
     if data is None:
         data = {'ranges': [TIMESHEET_RANGE]}
 
-    request = service.spreadsheets().values().batchClear(spreadsheetId=DOC_ID,
+    request = service.spreadsheets().values().batchClear(spreadsheetId=TIMESHEET_TEMPLATE_ID,
                                                          body=data)
     request.execute()
 
@@ -40,12 +40,12 @@ def update_timesheet(rows=None):
         'data': [{'range': TIMESHEET_RANGE, 'values': rows}]
         }
 
-    request = service.spreadsheets().values().batchUpdate(spreadsheetId=DOC_ID,
+    request = service.spreadsheets().values().batchUpdate(spreadsheetId=TIMESHEET_TEMPLATE_ID,
                                                           body=data)
     request.execute()
 
 
-def download_timesheet_pdf(filename, fileId=DOC_ID):
+def download_timesheet_pdf(filename, fileId=TIMESHEET_TEMPLATE_ID):
     print("Generating Timesheet:" + filename)
     MIME_TYPE = 'application/pdf'
 
