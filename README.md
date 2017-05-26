@@ -19,4 +19,7 @@ $ python generate_timesheets.py
 ````
 
 ### Authors
-* Susheel Varma <susheel.varma@gmail.com>
+* Susheel Varma <https://github.com/susheel>
+
+### Contributors
+* Aleksandra Nenadic <https://github.com/anenadic>
