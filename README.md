@@ -4,9 +4,9 @@ Simple python script that generates a University of Manchester's CAS4 - Casual T
 
 ### Pre-Requirements
 1. Create a [new Google Calendar](https://calendar.google.com/calendar/b/0/render?tab=mc#details_2%7Cdtv-_new_calendar_id_0-0-0) and note the **Calendar ID** from its settings (see [here](https://docs.simplecalendar.io/find-google-calendar-id/) how to find your calendar's ID.
-2. Save a copy of the [CAS4 Google Sheets](https://docs.google.com/spreadsheets/d/1ZAMos4th-2YuFJPLQrvZrnPwLw68eFkzLhW1PKIMUeU/edit) document to your Google Drive. Note its new ID as TIMESHEET_TEMPLATE_ID (something like 1ZAMos4th-2YuFJPLQrvZrnPwLw68eFkzLhW1PKIMUeU from the previous URL).
+2. Save a copy of the [CAS4 Google Sheets](https://docs.google.com/spreadsheets/d/1ZAMos4th-2YuFJPLQrvZrnPwLw68eFkzLhW1PKIMUeU/edit) document to your Google Drive. Note its new **ID** (something like 1ZAMos4th-2YuFJPLQrvZrnPwLw68eFkzLhW1PKIMUeU from the previous URL).
 3. Prefill or modify the CAS4 template document as necessary with your details, signature, etc.
-4. Update generate_timesheets.py script with the corresponding **CALENDAR ID** and **TIMESHEET_TEMPLATE_ID** noted from steps 1 and 2, respectively.
+4. Update generate_timesheets.py script's parameters **CALENDAR_ID** and **TIMESHEET_TEMPLATE_ID**  with the corresponding values noted from steps 1 and 2, respectively.
 5. Generate a [project in Google Developer's Console](https://console.developers.google.com) that will be used to access various Google APIs (below) from the timesheet generation script.
 5. Enable the [Google Calendar API](https://console.developers.google.com/apis/api/calendar-json.googleapis.com/overview) for your project to allow the script to access calendar events.
 6. Enable the [Google Drive API](https://console.developers.google.com/apis/api/drive.googleapis.com/overview) for your projectto allow the script to access the CAS4 template document.
