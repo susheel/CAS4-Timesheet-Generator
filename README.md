@@ -19,4 +19,4 @@ $ python generate_timesheets.py
 ````
 
 ### Authors
-* Susheel Varma <susheel.varma@gmail.com>
+* Susheel Varma <http://github.com/susheel>
