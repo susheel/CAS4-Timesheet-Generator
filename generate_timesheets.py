@@ -9,8 +9,8 @@ from apiclient.http import MediaIoBaseDownload
 
 from gclient import GClient
 
-CALENDAR_ID = "0vgnado5nqmtgc21egqgdl9888@group.calendar.google.com"
-TIMESHEET_TEMPLATE_ID = "1ZAMos4th-2YuFJPLQrvZrnPwLw68eFkzLhW1PKIMUeU"
+CALENDAR_ID = ""
+TIMESHEET_TEMPLATE_ID = ""
 TIMESHEET_RANGE = "'CAS 4'!B27:I33"
 DAY2ROW = {0: 6, 1: 0, 2: 1, 3: 2, 4: 3, 5: 4, 6: 5}
 START_DATE = "2017-02-01"
