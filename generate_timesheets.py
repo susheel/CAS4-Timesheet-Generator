@@ -9,11 +9,11 @@ from apiclient.http import MediaIoBaseDownload
 
 from gclient import GClient
 
-CALENDAR_ID = "INSERT_GOOGLE_CALENDAR_ID"
-DOC_ID = "INSERT_GOOGLE_DOC_ID"
+CALENDAR_ID = ""
+TIMESHEET_TEMPLATE_ID = ""
 TIMESHEET_RANGE = "'CAS 4'!B27:I33"
 DAY2ROW = {0: 6, 1: 0, 2: 1, 3: 2, 4: 3, 5: 4, 6: 5}
-START_DATE = "2017-04-01"
+START_DATE = "2017-02-01"
 
 TIMESHEET_EVENTS = {}
 
@@ -26,7 +26,7 @@ def clear_timesheet(data=None):
     if data is None:
         data = {'ranges': [TIMESHEET_RANGE]}
 
-    request = service.spreadsheets().values().batchClear(spreadsheetId=DOC_ID,
+    request = service.spreadsheets().values().batchClear(spreadsheetId=TIMESHEET_TEMPLATE_ID,
                                                          body=data)
     request.execute()
 
@@ -40,12 +40,12 @@ def update_timesheet(rows=None):
         'data': [{'range': TIMESHEET_RANGE, 'values': rows}]
         }
 
-    request = service.spreadsheets().values().batchUpdate(spreadsheetId=DOC_ID,
+    request = service.spreadsheets().values().batchUpdate(spreadsheetId=TIMESHEET_TEMPLATE_ID,
                                                           body=data)
     request.execute()
 
 
-def download_timesheet_pdf(filename, fileId=DOC_ID):
+def download_timesheet_pdf(filename, fileId=TIMESHEET_TEMPLATE_ID):
     print("Generating Timesheet:" + filename)
     MIME_TYPE = 'application/pdf'
 
@@ -107,12 +107,17 @@ def get_timesheet_events(start_date=None):
         # Calculating datetime differences
         start = dateutil.parser.parse(event_start)
         end = dateutil.parser.parse(event_end)
-        diff = end - start - datetime.timedelta(hours=1)   # LUNCH = 1hr!!
+        diff = end - start # - datetime.timedelta(hours=1)   # LUNCH = 1hr!!
         diff_hours = "{0:0>2}".format(str(diff.seconds//3600))
         diff_minutes = "{0:0>2}".format(str((diff.seconds//60) % 60))
         duration = diff_hours + ":" + diff_minutes
 
-        week = int(start.strftime('%W'))          # Week Number
+        week = int(start.strftime('%W'))          # Week number of the year
+        print("Week of the year: " + week.__str__())
+        print("Start: " + start.__str__())
+        print("End: " + end.__str__())
+        print
+
         TIMESHEET_EVENTS[week] = TIMESHEET_EVENTS.get(week, [])
 
         e = {}
@@ -126,10 +131,9 @@ def get_timesheet_events(start_date=None):
 
         TIMESHEET_EVENTS[week].append(e)
 
-
 def main():
     get_timesheet_events(START_DATE)
-    for week, values in TIMESHEET_EVENTS.iteritems():
+    for week, values in TIMESHEET_EVENTS.items():
         rows = build_weekly_timesheet(TIMESHEET_EVENTS[week])
         update_timesheet(rows)
         download_timesheet_pdf("CAS4-Week-" + str(week) + ".pdf")
