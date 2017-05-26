@@ -10,7 +10,7 @@ Simple python script that generates a University of Manchester's CAS4 - Casual T
 3. Prefill or modify the CAS4 template document as necessary.
 4. Update generate_timesheets.py with the corresponding **CALENDAR ID** and **DOC ID** noted from above.
 5. Enable the [Google Calendar API](https://console.developers.google.com/apis/api/calendar-json.googleapis.com/overview) to allow the script to access calendar events.
-6. Enable the [Google Drive API](https://console.developers.google.com/apis/api/sheets.googleapis.com/overview) to allow the script to access the CAS4 template document.
+6. Enable the [Google Sheets API](https://console.developers.google.com/apis/api/sheets.googleapis.com/overview) to allow the script to access the CAS4 template document.
 7. Create a new OAuth client ID from the Google API Console [Credential page](https://console.developers.google.com/apis/credentials). Follow instructions [here](https://developers.google.com/api-client-library/python/samples/samples).
 8. Download and save the credentials as `client_secret.json` in this directory
 
